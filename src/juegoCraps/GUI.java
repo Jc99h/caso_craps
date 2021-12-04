@@ -1,12 +1,12 @@
-package myProject;
+package juegoCraps;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * This class is used for ...
- * @autor Camilo Ordoñez juan.ordonez.hurtado@correounivalle.edu.co
- * @version v.1.0.0 date:21/11/2021
+ * @autor Camilo Ordoñez 1827625-2711 juan.ordonez.hurtado@correounivalle.edu.co
+ * @version v.1.0.0 date:03/12/2021
  */
 public class GUI extends JFrame {
 

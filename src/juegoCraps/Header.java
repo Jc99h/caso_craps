@@ -1,12 +1,12 @@
-package myProject;
+package juegoCraps;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * This class is a kind of JLabel used to create a personalized Header for the project
- * @autor Camilo Ordoñez juan.ordonez.hurtado@correounivalle.edu.co
- * @version @version v.1.0.0 date:21/11/2021
+ * @autor Camilo Ordoñez 1827625-2711 juan.ordonez.hurtado@correounivalle.edu.co
+ * @version @version v.1.0.0 date:03/12/2021
  */
 public class Header extends JLabel {
     /**
