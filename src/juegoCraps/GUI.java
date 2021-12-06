@@ -3,6 +3,8 @@ package juegoCraps;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * This class is used as view craps class
@@ -26,6 +28,8 @@ public class GUI extends JFrame {
     private JPanel panelDados, panelResultados;
     private ImageIcon imagenDado;
     private JTextArea resultados;
+    private Escucha escucha;
+    private ModelCraps modelCraps;
 
     /**
      * Constructor of GUI class
@@ -49,7 +53,9 @@ public class GUI extends JFrame {
      */
     private void initGUI() {
         //Set up JFrame Container's Layout
-        //Create Listener Object and Control Object
+        //Create Listener Object or Control Object
+        escucha = new Escucha();
+        modelCraps = new ModelCraps();
         //Set up JComponents
         headerProject = new Header("Mesa Juego Craps", Color.BLACK);
         this.add(headerProject,BorderLayout.NORTH);
@@ -59,6 +65,7 @@ public class GUI extends JFrame {
         dado2 = new JLabel(imagenDado);
 
         lanzar = new JButton("Lanzar");
+        lanzar.addActionListener(escucha);
 
         panelDados = new JPanel();
         panelDados.setPreferredSize(new Dimension(300,180));
@@ -90,7 +97,20 @@ public class GUI extends JFrame {
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
-    private class Escucha {
+    private class Escucha implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent objectEvent)
+        {
+            modelCraps.calcularTiro();
+            int[] caras = modelCraps.getCaras();
+            imagenDado = new ImageIcon(getClass().getResource("/resources/"+caras[0]+".png"));
+            dado1.setIcon(imagenDado);
+            imagenDado = new ImageIcon(getClass().getResource("/resources/"+caras[1]+".png"));
+            dado2.setIcon(imagenDado);
 
+            modelCraps.determinarJuego();
+            resultados.setText(modelCraps.getEstadoToString());
+        }
     }
 }
